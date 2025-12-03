@@ -23,3 +23,7 @@ Finally serve the project `php artisan serve`.
 - A separate table will be created for roles and permissions. Each role will have several permissions.
 - Users will be assigned roles.
 - Based on the role the user has, the relevant permissions will be taken into when authorizing.
+
+
+## Class Diagram
+![Alt text](diagram.png?raw=true "Class Diagram")
