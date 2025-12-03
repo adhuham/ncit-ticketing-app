@@ -8,8 +8,10 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <x-error-messages />
+
                 <h3>Create a Ticket</h3>
-                <form action="" method="post">
+                <form action="{{ route('tickets.store') }}" method="post">
                     @csrf
                         <div class="mb-4">
                             <label for="title">Title</label>    
@@ -33,8 +35,8 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="priority">Priority</label>    
-                            <select name="priority" id="priority">
+                            <label for="severity">Severity</label>    
+                            <select name="severity" id="severity">
                                 @foreach($severityLevels as $severity)
                                     <option value="{{ $severity }}">
                                         {{ $severity->label() }}

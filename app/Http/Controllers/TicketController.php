@@ -25,12 +25,13 @@ class TicketController extends Controller
     {
         DB::transaction(function () use ($request) {
             $ticket = new Ticket();
+            $ticket->user_id = $request->user()->id;
             $ticket->title = $request->input('title');
             $ticket->description = $request->input('description');
             $ticket->category_id = $request->input('category_id');
             $ticket->severity = $request->input('severity');
             $ticket->save();
-        }); 
+        });
 
         return redirect()->route('tickets.index')->with('success', 'Ticket created successfully.');
     }
