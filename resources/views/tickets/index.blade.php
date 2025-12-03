@@ -6,13 +6,13 @@
     </x-slot>
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <x-success-messages />
 
         <div class="py-12">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <x-success-messages />
+
+            <div class="bg-white p-10">
                 <x-error-messages />
 
-                <h3>Create a Ticket</h3>
                 <form action="{{ route('tickets.store') }}" method="post">
                     @csrf
                         <div class="mb-4">
@@ -66,7 +66,7 @@
                     <p>Status: {{ $ticket->status->label() }}</p>
                     <p>Last Updated: {{ $ticket->updated_at->format('d M Y') }}</p>
 
-                    <form action="{{ route('tickets.update-status', $ticket) }}" method="post">
+                    <form action="{{ route('tickets.update-status', $ticket) }}" method="post" class="block mb-5 mt-5">
                         @csrf
                         @method('patch')
 
@@ -96,7 +96,9 @@
                         <button type="submit">Assign Ticket</button>
                     </form>
 
-                    <a href="{{ route('tickets.show', $ticket) }}">View Details</a>
+                    <div class="pt-10">
+                        <a href="{{ route('tickets.show', $ticket) }}">View Details</a>
+                    </div>
 
                 </div>
             @endforeach

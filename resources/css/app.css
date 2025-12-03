@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+button {
+    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;  
+}
+
+label {
+    @apply block text-gray-700 font-bold mb-2;
+}
+
+input {
+    @apply block border border-gray-300 rounded py-2 px-3;
+}
+
+a {
+    @apply text-blue-500 underline;
+}
