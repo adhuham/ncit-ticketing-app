@@ -18,17 +18,12 @@ class TicketTest extends TestCase
     public function test_can_create_tickets(): void
     {
         $user = User::factory()->create();
-
-        foreach (['Access', 'Hardware', 'Software'] as $categoryName) {
-            $category = new Category();
-            $category->name = $categoryName;
-            $category->save();
-        }   
+        $category = Category::factory()->create();
 
         $response = $this->actingAs($user)
             ->get('/tickets', [
                 'title' => 'Sample Ticket',
-                'description' => 'This is a sample ticket description.',
+                'description' => 'This is a sample ticket description',
                 'category_id' => Category::first()->id,
                 'severity' => Severity::LOW->value,
             ]);
