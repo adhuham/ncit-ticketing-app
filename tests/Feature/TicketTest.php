@@ -18,7 +18,7 @@ class TicketTest extends TestCase
     public function test_can_create_tickets(): void
     {
         $user = User::factory()->create();
-        $category = Category::factory()->create();
+        Category::factory()->create();
 
         $response = $this->actingAs($user)
             ->get('/tickets', [
