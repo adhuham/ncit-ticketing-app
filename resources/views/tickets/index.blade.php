@@ -60,6 +60,7 @@
                     <p>Category: {{ $ticket->category->name }}</p>
                     <p>Severity: {{ $ticket->severity->label() }}</p>
                     <p>Submitted By: {{ $ticket->user->name }}</p>
+                    <p>Status: {{ $ticket->status->label() }}</p>
                 </div>
             @endforeach
         </div>

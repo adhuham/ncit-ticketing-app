@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Severity;
+use App\Enums\Status;
 use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
@@ -11,6 +12,7 @@ class Ticket extends Model
     {
         return [
             'severity' => Severity::class,
+            'status' => Status::class,
         ];
     }
 
