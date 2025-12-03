@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('severity', ['low', 'medium', 'high'])->default('low');
             $table->enum('status', ['open', 'in-progress', 'resolved', 'closed'])->default('open');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('assigned_to')->constrained('users')->onDelete('cascade');
+            $table->foreignId('assigned_to')->nullable()->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
