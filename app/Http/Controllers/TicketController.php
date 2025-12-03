@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Enums\Severity;
 use App\Enums\Status;
+use App\Http\Requests\TicketAssignRequest;
 use App\Http\Requests\TicketStoreRequest;
 use App\Http\Requests\TicketUpdateStatusRequest;
 use App\Models\Category;
 use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
@@ -22,10 +24,13 @@ class TicketController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();   
 
+        $users = User::all();
+
         return view('tickets.index', [
             'categories' => $categories,
             'severityLevels' => $severityLevels,
             'statuses' => $statuses,
+            'users' => $users, 
             'tickets' => $tickets,  
         ]);
     }
@@ -51,5 +56,13 @@ class TicketController extends Controller
         $ticket->save();
 
         return redirect()->route('tickets.index')->with('success', 'Ticket status updated successfully.');
+    }
+
+    public function assign(Ticket $ticket, TicketAssignRequest $request)
+    {
+        $ticket->assigned_to = $request->input('assigned_to');
+        $ticket->save();
+
+        return redirect()->route('tickets.index')->with('success', 'Ticket assigned successfully.');
     }
 }

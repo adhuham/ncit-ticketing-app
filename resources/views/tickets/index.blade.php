@@ -62,6 +62,7 @@
                     <p>Category: {{ $ticket->category->name }}</p>
                     <p>Severity: {{ $ticket->severity->label() }}</p>
                     <p>Submitted By: {{ $ticket->user->name }}</p>
+                    <p>Assigned To: {{ !empty($ticket->assignedTo) ? $ticket->assignedTo->name : '- Not Assigned -' }}</p>
                     <p>Status: {{ $ticket->status->label() }}</p>
 
                     <form action="{{ route('tickets.update-status', $ticket) }}" method="post">
@@ -77,6 +78,21 @@
                             @endforeach
                         </select>
                         <button type="submit">Update Status</button>
+                    </form>
+
+                    <form action="{{ route('tickets.assign', $ticket) }}" method="post">
+                        @csrf
+                        @method('patch')
+
+                        <label for="assigned_to">Assign To:</label>
+                        <select name="assigned_to" id="assigned_to">
+                            @foreach($users as $user)
+                                <option value="{{ $user->id }}">
+                                    {{ $user->name }}  
+                                </option>
+                            @endforeach
+                        </select>
+                        <button type="submit">Assign Ticket</button>
                     </form>
 
                 </div>

@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::get('tickets', [TicketController::class, 'index'])->name('tickets.index');
     Route::post('tickets', [TicketController::class, 'store'])->name('tickets.store');
     Route::patch('tickets/{ticket}/update-status', [TicketController::class, 'updateStatus'])->name('tickets.update-status');
+    Route::patch('tickets/{ticket}/assign', [TicketController::class, 'assign'])->name('tickets.assign');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
