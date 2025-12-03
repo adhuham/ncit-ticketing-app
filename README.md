@@ -12,3 +12,9 @@ To run the project:
 - Build file with `npm run build`
 
 Finally serve the project `php artisan serve`.
+
+## Design Choice
+- Laravel Form Requests were used to validate the requests to make the system more modular. Every request to the controller contains a corresponding form request file that contains the validation logic
+- Enums were used to store Severity and Status detail as they often do not change. Built-in laravel enum casts were used.
+- Categories are stored on a seperate table and is related to the tickets table via a join. This ensures the extensibility of the system as it allows adding more categories when the need arise.
+- PHPUnit test is created to test ticket creation function 
