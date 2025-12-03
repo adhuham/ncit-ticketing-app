@@ -64,6 +64,7 @@
                     <p>Submitted By: {{ $ticket->user->name }}</p>
                     <p>Assigned To: {{ !empty($ticket->assignedTo) ? $ticket->assignedTo->name : '- Not Assigned -' }}</p>
                     <p>Status: {{ $ticket->status->label() }}</p>
+                    <p>Last Updated: {{ $ticket->updated_at->format('d M Y') }}</p>
 
                     <form action="{{ route('tickets.update-status', $ticket) }}" method="post">
                         @csrf
