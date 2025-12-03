@@ -15,9 +15,14 @@ class TicketController extends Controller
         $categories = Category::all();   
         $severityLevels = Severity::cases();
 
+        $tickets = Ticket::with('category', 'user', 'assignedTo')
+            ->orderBy('created_at', 'desc')
+            ->get();   
+
         return view('tickets.index', [
             'categories' => $categories,
             'severityLevels' => $severityLevels,
+            'tickets' => $tickets,  
         ]);
     }
 

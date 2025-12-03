@@ -5,8 +5,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="py-12">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <x-error-messages />
 
@@ -50,6 +50,18 @@
                         </div>
                 </form>
             </div>
+        </div>
+
+        <div class="pb-20">
+            @foreach ($tickets as $ticket)
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <h3 class="font-semibold text-lg">{{ $ticket->title }}</h3>
+                    <p>{{ $ticket->description }}</p>
+                    <p>Category: {{ $ticket->category->name }}</p>
+                    <p>Severity: {{ $ticket->severity->label() }}</p>
+                    <p>Submitted By: {{ $ticket->user->name }}</p>
+                </div>
+            @endforeach
         </div>
     </div>
 </x-app-layout>
