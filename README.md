@@ -18,3 +18,8 @@ Finally serve the project `php artisan serve`.
 - Enums were used to store Severity and Status detail as they often do not change. Built-in laravel enum casts were used.
 - Categories are stored on a seperate table and is related to the tickets table via a join. This ensures the extensibility of the system as it allows adding more categories when the need arise.
 - PHPUnit test is created to test ticket creation function 
+
+## Roles and Permission
+- A separate table will be created for roles and permissions. Each role will have several permissions.
+- Users will be assigned roles.
+- Based on the role the user has, the relevant permissions will be taken into when authorizing.
