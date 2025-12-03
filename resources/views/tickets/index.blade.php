@@ -61,6 +61,21 @@
                     <p>Severity: {{ $ticket->severity->label() }}</p>
                     <p>Submitted By: {{ $ticket->user->name }}</p>
                     <p>Status: {{ $ticket->status->label() }}</p>
+
+                    <form action="{{ route('tickets.update-status', $ticket) }}" method="post">
+                        @csrf
+                        @method('patch')
+
+                        <label for="status">Status:</label>
+                        <select name="status" id="status">
+                            @foreach($statuses as $status)
+                                <option value="{{ $status }}">
+                                    {{ $status->label() }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <button type="submit">Update Status</button>
+                    </form>
                 </div>
             @endforeach
         </div>
