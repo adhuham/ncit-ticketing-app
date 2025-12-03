@@ -17,16 +17,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'password' => Hash::make('123'),
+        $this->call([
+            UserSeeder::class,
+            CategorySeeder::class,
+            TicketSeeder::class,
         ]);
-        
-        foreach (['Access', 'Hardware', 'Software'] as $categoryName) {
-            $category = new Category();
-            $category->name = $categoryName;
-            $category->save();
-        }   
     }
 }
