@@ -35,6 +35,11 @@ class TicketController extends Controller
         ]);
     }
 
+    public function show(Ticket $ticket)
+    {
+        // show ticket details
+    }   
+
     public function store(TicketStoreRequest $request)
     {
         DB::transaction(function () use ($request) {

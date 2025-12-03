@@ -15,6 +15,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('tickets', [TicketController::class, 'index'])->name('tickets.index');
     Route::post('tickets', [TicketController::class, 'store'])->name('tickets.store');
+    Route::get('tickets/{ticket}', [TicketController::class, 'show'])->name('tickets.show');
     Route::patch('tickets/{ticket}/update-status', [TicketController::class, 'updateStatus'])->name('tickets.update-status');
     Route::patch('tickets/{ticket}/assign', [TicketController::class, 'assign'])->name('tickets.assign');
 

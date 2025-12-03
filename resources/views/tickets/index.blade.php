@@ -95,6 +95,8 @@
                         <button type="submit">Assign Ticket</button>
                     </form>
 
+                    <a href="{{ route('tickets.show', $ticket) }}">View Details</a>
+
                 </div>
             @endforeach
         </div>
