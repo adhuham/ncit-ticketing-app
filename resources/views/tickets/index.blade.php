@@ -57,6 +57,7 @@
         <div class="pb-20">
             @foreach ($tickets as $ticket)
                 <div class="p-6 bg-white border-b border-gray-200">
+                    <p>#{{ $ticket->id }}</p>
                     <h3 class="font-semibold text-lg">{{ $ticket->title }}</h3>
                     <p>{{ $ticket->description }}</p>
                     <p>Category: {{ $ticket->category->name }}</p>
